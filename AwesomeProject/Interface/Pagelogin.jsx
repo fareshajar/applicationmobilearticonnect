@@ -26,7 +26,7 @@ const Pagelogin = () => {
           const userId = data.userId;
           navigation.navigate('PresentationProduit', { UserId: userId});
         } else if (data.userType === 2) {
-          navigation.navigate('Interfacefournisseur', { fournisseurPassword: PassWord, UserId: data.userId });
+          navigation.navigate('Interfacefournisseur', {UserId: data.userId });
         }
       } else {
         Alert.alert('Erreur', 'Nom d\'utilisateur ou mot de passe incorrect.');
