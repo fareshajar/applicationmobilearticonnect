@@ -6,7 +6,6 @@ import Icones3 from 'react-native-vector-icons/FontAwesome';
 import Icones4 from 'react-native-vector-icons/Feather';
 import Icones from 'react-native-vector-icons/Ionicons';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Picker } from '@react-native-picker/picker';
 
 const PresentationProduit = () => {
@@ -81,7 +80,7 @@ const PresentationProduit = () => {
 
     return produitsFiltres.map((produit, index) => (
       <View key={index} style={styles.row}>
-        <TouchableOpacity style={styles.produitContainer} onPress={() => handleProductSelection(produit)}>
+        <TouchableOpacity style={styles.produitContainer} onPress={() => ProductSelection(produit)}>
           <View style={styles.ContainerPro}>
             <Image
               source={{ uri: `data:image/jpeg;base64,${produit.imageBase64}` }}
@@ -103,7 +102,7 @@ const PresentationProduit = () => {
     ));
   };
 
-  const handleProductSelection = (product) => {
+  const ProductSelection = (product) => {
     setSelectedProduct(product);
     setIsModalVisible(true);
   };
@@ -167,15 +166,13 @@ const PresentationProduit = () => {
       </View>
       <ScrollView
         style={styles.produitsContainer}
-        contentContainerStyle={{ flexGrow: 1 }}
-      >
+        contentContainerStyle={{ flexGrow: 1 }} >
         {presentationproduit()}
       </ScrollView>
       <Modal
         visible={isModalVisible}
         onRequestClose={closeModal}
-        transparent={true}
-      >
+        transparent={true}>
         <TouchableWithoutFeedback onPress={closeModal}>
           <View style={styles.modalContainer}>
             <View style={styles.modalContent}>
@@ -269,14 +266,14 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
   ContainerPro: {
-    backgroundColor: '#FFFFFF', // Nouvelle couleur de fond
-    borderRadius: 10, // Bordure arrondie
-    marginBottom: 20, // Marge en bas
+    backgroundColor: '#FFFFFF',
+    borderRadius: 10,
+    marginBottom: 20,
     width: '100%',
-    shadowColor: '#000', // Couleur de l'ombre
-    shadowOffset: { width: 0, height: 2 }, // Décalage de l'ombre
-    shadowOpacity: 0.25, // Opacité de l'ombre
-    shadowRadius: 3.84, // Rayon de l'ombre
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
     elevation: 5,
   },
   row: {
@@ -327,7 +324,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#fff', // Fond clair pour le menu vertical
     width: 120,
-    height: '50%',
+    height: '60%',
     paddingVertical: 20,
     borderRightWidth: 1,
     borderColor: '#8d6e63', // Bordure brune

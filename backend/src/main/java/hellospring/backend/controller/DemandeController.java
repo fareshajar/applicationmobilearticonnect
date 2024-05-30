@@ -27,9 +27,9 @@ public class DemandeController {
         int idService = Integer.parseInt(demande.get("idService"));
         int idFournisseur = demandeRepository.selectionnerfournisseur(idService);
         newDemande.setQuantite( Integer.parseInt(demande.get("quantite")));
-        newDemande.setIdService(Integer.parseInt(demande.get("idService")));
         newDemande.setIdFournisseur(idFournisseur);
-        newDemande.setIdClient(Integer.parseInt(demande.get("UserId")));
+        newDemande.setIdClient( Integer.parseInt(demande.get("UserId")));
+        newDemande.setIdService(Integer.parseInt(demande.get("idService")));
         int resultat = demandeRepository.AjouterCommande(newDemande);
         if (resultat > 0) {
             return ResponseEntity.ok("{\"message\": \"votre demande a été envoyé \"}");
@@ -38,9 +38,9 @@ public class DemandeController {
         }
     }
     @GetMapping("/GetDemande")
-    public List<Demande> getAllDemandes(@RequestParam String status, @RequestParam String passWord) {
+    public List<Demande> getAllDemandes(@RequestParam String status, @RequestParam int  UserId) {
 
-            List<Demande> demandes = demandeRepository.findAll(status, passWord);
+            List<Demande> demandes = demandeRepository.findAll(status, UserId);
             for (Demande demande : demandes) {
                 if (demande.getImage() != null) {
                     String base64Image = Base64.getEncoder().encodeToString(demande.getImage());

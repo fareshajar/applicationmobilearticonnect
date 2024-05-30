@@ -16,7 +16,6 @@ function AjouterProduit() {
   const navigation = useNavigation();
   const defaultImage = require('../image/5.png');
   const UserId = route.params?.UserId;
-  const fournisseurPassword = route.params?.fournisseurPassword;
 
   const handleImagePick = () => {
     const options = {
@@ -77,13 +76,12 @@ function AjouterProduit() {
         },
         body: JSON.stringify(dataToSend),
       });
-      console.log(dataToSend)
 
       const text = await response.text();
 
       if (response.ok) {
         Alert.alert('Succès', 'Service ajouté avec succès.');
-        navigation.navigate('Ajouterproduit', { fournisseurPassword:fournisseurPassword,UserId: UserId });
+        navigation.navigate('Ajouterproduit', {UserId: UserId });
       } else {
         console.error('Réponse non ok:', text); // Log de la réponse brute
         try {
@@ -105,7 +103,7 @@ function AjouterProduit() {
         <View style={styles.titleContainer}>
           <TouchableOpacity
             style={styles.rollback}
-            onPress={() => navigation.navigate('Interfacefournisseur', { fournisseurPassword: fournisseurPassword, UserId: UserId })}
+            onPress={() => navigation.navigate('Interfacefournisseur', {UserId: UserId })}
           >
             <Icones name="chevron-back-outline" size={24} color='#8d6e63' />
           </TouchableOpacity>

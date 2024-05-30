@@ -10,7 +10,6 @@ const VoirAvisClient = () => {
   const [avisList, setAvisList] = useState([]);
   const [loading, setLoading] = useState(true); // Initialiser à true pour afficher l'icône de chargement
   const navigation = useNavigation();
-  const fournisseurPassword = route.params?.fournisseurPassword;
 
   useEffect(() => {
     fetchAvisList();
@@ -48,7 +47,7 @@ const VoirAvisClient = () => {
       <View style={styles.header}>
         <TouchableOpacity
           style={styles.rollback}
-          onPress={() => navigation.navigate('Interfacefournisseur', { fournisseurPassword: fournisseurPassword, UserId: UserId })}
+          onPress={() => navigation.navigate('Interfacefournisseur', {UserId: UserId })}
         >
           <Icones name="chevron-back-outline" size={24} color="#6D3421" />
         </TouchableOpacity>

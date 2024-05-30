@@ -13,15 +13,15 @@ const DemandeFournisseur = () => {
   const [loading, setLoading] = useState(true);
   const navigation = useNavigation();
   const route = useRoute();
-  const fournisseurPassword = route.params?.fournisseurPassword;
   const UserId = route.params?.UserId;
 
   const ListeCommandeEnAttente = async () => {
     try {
-      const response = await fetch(`http://10.0.2.2:8082/api/GetDemande?status=en-attente&passWord=${fournisseurPassword}`, {
+      const response = await fetch(`http://10.0.2.2:8082/api/GetDemande?status=en-attente&UserId=${UserId}`, {
         method: 'GET',
       });
       const data = await response.json();
+
       setEnAttente(data);
     } catch (error) {
       console.error('Erreur lors de la récupération des commandes en attente:', error);
@@ -30,7 +30,7 @@ const DemandeFournisseur = () => {
 
   const ListeCommandeTermine = async () => {
     try {
-      const response = await fetch(`http://10.0.2.2:8082/api/GetDemande?status=termine&passWord=${fournisseurPassword}`, {
+      const response = await fetch(`http://10.0.2.2:8082/api/GetDemande?status=termine&UserId=${UserId}`, {
         method: 'GET',
       });
       const data = await response.json();
@@ -132,7 +132,7 @@ const DemandeFournisseur = () => {
       <View style={styles.header}>
         <TouchableOpacity
           style={styles.rollback}
-          onPress={() => navigation.navigate('Interfacefournisseur', { fournisseurPassword: fournisseurPassword, UserId: UserId })}
+          onPress={() => navigation.navigate('Interfacefournisseur', {UserId: UserId })}
         >
           <Icones name="chevron-back-outline" size={20} color="#6D3421" />
         </TouchableOpacity>

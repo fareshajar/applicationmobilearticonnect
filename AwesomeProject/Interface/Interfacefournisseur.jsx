@@ -25,15 +25,15 @@ const Interfacefournisseur = () => {
       </View>
 
       <View style={styles.mainContainer}>
-      <TouchableOpacity style={[styles.containerItem, styles.iconContainer3]} onPress={() => navigation.navigate('Ajouterproduit', { fournisseurPassword, UserId })}>
+      <TouchableOpacity style={[styles.containerItem, styles.iconContainer3]} onPress={() => navigation.navigate('Ajouterproduit', {UserId })}>
                 <Icon1 name="add-circle-outline" size={40} color="#FFFFFF" />
                 <Text style={styles.text}>Ajouter un produit</Text>
-       </TouchableOpacity>
-        <TouchableOpacity style={[styles.containerItem, styles.iconContainer2]} onPress={() => navigation.navigate('DemandeFournisseur', { fournisseurPassword, UserId })}>
+      </TouchableOpacity>
+        <TouchableOpacity style={[styles.containerItem, styles.iconContainer2]} onPress={() => navigation.navigate('DemandeFournisseur', {UserId })}>
           <Icon2 name="clipboard" size={40} color="#FFFFFF" />
           <Text style={styles.text}>Voir commandes</Text>
         </TouchableOpacity>
-         <TouchableOpacity style={[styles.containerItem, styles.iconContainer1]} onPress={() => navigation.navigate('VoirAvisClient', { fournisseurPassword, UserId })}>
+         <TouchableOpacity style={[styles.containerItem, styles.iconContainer1]} onPress={() => navigation.navigate('VoirAvisClient', { UserId })}>
           <Icon name="comment-o" size={40} color="#FFFFFF" />
           <Text style={styles.text}>Voir les avis des clients</Text>
         </TouchableOpacity>

@@ -51,7 +51,7 @@ public class DemandeRepository {
         return resultat;
     }
 
-    public List<Demande> findAll(String status, String PassWord) {
+    public List<Demande> findAll(String status, int UserId) {
         List<Demande> demandes = new ArrayList<>();
         Connection conn = connexion();
         String select = "SELECT u2.UserName as nomClient, u2.mobile as mobileclient, D.IdDemande, D.status, D.quantite, u2.adress as adressClient, s.image " +
@@ -59,10 +59,10 @@ public class DemandeRepository {
                 "INNER JOIN usertable u ON D.IdFournisseur = u.UserId " +
                 "INNER JOIN service s ON D.IdService = s.ServiceId " +
                 "INNER JOIN usertable u2 ON D.IdClient = u2.UserId " +
-                "WHERE D.status = ? AND u.PassWord = ?";
+                "WHERE D.status = ? AND u.UserId = ?";
         try (PreparedStatement statement = conn.prepareStatement(select)) {
             statement.setString(1, status);
-            statement.setString(2, PassWord);
+            statement.setInt(2, UserId);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 Demande demande = new Demande();

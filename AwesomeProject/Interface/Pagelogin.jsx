@@ -20,7 +20,7 @@ const Pagelogin = () => {
         body: JSON.stringify({ UserName, PassWord }),
       });
       const data = await response.json();
-      console.log(data)
+
       if (response.ok) {
         if (data.userType === 1) {
           const userId = data.userId;

@@ -10,7 +10,6 @@ const PasserCommande = ({ route }) => {
 
   const PasserCommande = async () => {
     const demande = {
-      nomFournisseur: nomfournisseur,
       quantite: quantite,
       UserId: UserId,
       idService: serviceId,

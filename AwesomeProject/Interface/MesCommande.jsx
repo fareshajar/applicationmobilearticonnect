@@ -90,7 +90,7 @@ const MesCommandes = ({ route }) => {
                                           >
                                           <Icone name="send-o" size={24} color="#8d6e63" />
                                             </TouchableOpacity>
-                                             </View>
+                        </View>
                    )}
                </View>
                   </View>

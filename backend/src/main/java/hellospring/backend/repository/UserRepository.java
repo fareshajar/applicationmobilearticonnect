@@ -9,9 +9,7 @@ public class UserRepository  {
     public Connection connexion(){
         Connection conn= null ;
         try {
-
             conn = DriverManager.getConnection("jdbc:mysql://localhost/mobapp","root","");
-
         } catch (SQLException e) {
             System.out.println(e.toString());
 
