@@ -17,7 +17,7 @@ function AjouterProduit() {
   const defaultImage = require('../image/5.png');
   const UserId = route.params?.UserId;
 
-  const handleImagePick = () => {
+  const ImagePick = () => {
     const options = {
       mediaType: 'photo',
       quality: 1,
@@ -50,7 +50,7 @@ function AjouterProduit() {
     });
   };
 
-  const handleSubmit = async () => {
+  const Submit = async () => {
     try {
       let base64Image = null;
       if (image) {
@@ -109,7 +109,7 @@ function AjouterProduit() {
           </TouchableOpacity>
           <Text style={styles.title}>Ajouter un produit</Text>
         </View>
-        <TouchableOpacity style={styles.imagePicker} onPress={handleImagePick}>
+        <TouchableOpacity style={styles.imagePicker} onPress={ImagePick}>
           {image ? (
             <Image source={{ uri: image }} style={styles.image} />
           ) : (
@@ -154,7 +154,7 @@ function AjouterProduit() {
           numberOfLines={4}
         />
 
-        <TouchableOpacity style={styles.button} onPress={handleSubmit}>
+        <TouchableOpacity style={styles.button} onPress={Submit}>
           <Text style={styles.buttonText}>Ajouter Service</Text>
         </TouchableOpacity>
       </ScrollView>
