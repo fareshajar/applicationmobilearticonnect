@@ -9,7 +9,6 @@ import Icones from 'react-native-vector-icons/Ionicons';
 const Interfacefournisseur = () => {
   const navigation = useNavigation();
   const route = useRoute();
-  const fournisseurPassword = route.params?.fournisseurPassword;
   const UserId = route.params?.UserId;
 
   return (
